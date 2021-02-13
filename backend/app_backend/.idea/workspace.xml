@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="701717dc-741d-48d6-8b0d-141b26cffff2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../__tests__/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/BUCK" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/build_defs.bzl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/debug.keystore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/debug/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/debug/java/com/spacedrepetitionapp/ReactNativeFlipper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/java/com/spacedrepetitionapp/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/java/com/spacedrepetitionapp/MainApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/drawable/splashscreen.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/drawable/splashscreen_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Podfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Podfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp.xcodeproj/xcshareddata/xcschemes/SpacedRepetitionApp.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/AppDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/AppDelegate.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/Base.lproj/LaunchScreen.xib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/Images.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/Images.xcassets/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/Images.xcassets/SplashScreen.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/Images.xcassets/SplashScreen.imageset/splashscreen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/Images.xcassets/SplashScreenBackground.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/Images.xcassets/SplashScreenBackground.imageset/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/SplashScreen.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/Supporting/Expo.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/SpacedRepetitionApp/main.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../metro.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../yarn.lock" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1oPsxBdJIb1efy1piXpS0A0pjlc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="701717dc-741d-48d6-8b0d-141b26cffff2" name="Default Changelist" comment="" />
+      <created>1613199804141</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613199804141</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="500" y="336" key="com.intellij.ide.util.TipDialog" timestamp="1613232197097">
+      <screen x="0" y="23" width="1680" height="979" />
+    </state>
+    <state x="500" y="336" key="com.intellij.ide.util.TipDialog/0.23.1680.979@0.23.1680.979" timestamp="1613232197097" />
+  </component>
+</project>
