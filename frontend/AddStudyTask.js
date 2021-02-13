@@ -5,7 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 const DoneButton = (props) => {
     return (
         <Button title="Save Task"
-                onPress={() => Alert.alert("Button Pressed")} 
+                onPress={props.handleSubmit} 
                 ></Button>
     );
 }
@@ -52,17 +52,45 @@ class AddStudyTask extends Component {
         // console.log(date);
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state.subject);
+    }
+
+    handleChangeSubjectText(text) {
+        this.setState((state, props) => {
+            return {subject: text}
+        }, () => {
+            console.log(this.state.subject);
+        })
+    }
+    
+    handleChangeDescriptionText(text) {
+        this.setState((state, props) => {
+            return {description: text}
+        }, () => {
+            console.log(this.state.description);
+        })
+    }
+
     render () {
 
         return (
             <View>
                 <Text>Study Task Details</Text>
-                <TextInput style={
-                    styles.inputStyle} placeholder="Subject"/>
-                <TextInput style={styles.inputStyle} placeholder="Description"/>
-                <DoneButton />
+                <TextInput 
+                    style={styles.inputStyle} 
+                    placeholder="Subject" 
+                    value={this.state.subject}
+                    onChangeText={text => this.handleChangeSubjectText(text)}/>
+                <TextInput 
+                    style={styles.inputStyle} 
+                    placeholder="Description" 
+                    value={this.state.description} onChangeText={text => this.handleChangeDescriptionText(text)}/>
+                <DoneButton handleSubmit={this.handleSubmit}/>
                 <Text>Tap here to choose when you want to master this subject by: </Text>
                 <DateToMasterByPicker handler={this.handler} masterByDate={this.state.dateToMasterBy} />
+                <Text>Default study interval: Study every 5 days</Text>
             </View>
         );
     }
