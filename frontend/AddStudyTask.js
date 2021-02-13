@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react'
-import { StyleSheet, Text, View,  ScrollView, Button, TextInput, Alert } from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, Button, TextInput, } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const DoneButton = (props) => {
