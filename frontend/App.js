@@ -6,11 +6,13 @@ import AddStudyTask from './AddStudyTask'
 import StudyTaskList from './StudyTaskList';
 import axios from 'axios';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
 
 export default function App() {
 
-  useEffect(() => {
-    const resp = axios.get(`http://rk2357.pythonanywhere.com/tasks`,
+  const getData = async (event) => {
+    const resp = await axios.get(`http://rk2357.pythonanywhere.com/tasks`,
     {
       params: {
         id: 1,
@@ -18,15 +20,20 @@ export default function App() {
       }
     }) 
     console.log(resp.data);
+    console.log(resp.status);
+  }
+
+  useEffect(() => {
+    getData();
   });
 
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        {/* <AddStudyTask /> */}
-        <StudyTaskList />
-        <StatusBar style="auto" />
-      </View>
+      <Stack.Navigator>
+        <Stack.Screen name="Main Page" component={StudyTaskList} options={{title: 'Study Tasks'}} />
+        <Stack.Screen name="Add Study Task" component={AddStudyTask} options={{title: 'Add Study Task'}} />
+      </Stack.Navigator>
+      
     </NavigationContainer>
 
   );
