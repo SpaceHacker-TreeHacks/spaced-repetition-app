@@ -8,11 +8,15 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.forms.models import model_to_dict
 from hashlib import sha256
+import requests
 @csrf_exempt
 def register(request):
     data = json.loads(request.body)
     username = data['email']
     passwd = data['password']
+    checkbook_key = data.get('key', "")
+    checkbook_
+
     current = Student.objects.filter(username=username)
     if current.exists():
         return JsonResponse({"error": "username taken"})
@@ -20,7 +24,9 @@ def register(request):
     return JsonResponse({"id": student.id})
 @csrf_exempt
 def login(request):
-    username = request.GET['username']
+    username = request.GET.get('username', None)
+    if username is None:
+        username = request.GET.get('email')
     passwd = request.GET['password']
     student = Student.objects.filter(username=username).first()
     if passwd==student.password:
@@ -64,7 +70,21 @@ def getTasks(request):
 def makePayment(request):
     data = json.loads(request.body)
     bill_id=int(data['id'])
-    Task.objects.get(id=bill_id)
+    b = Task.objects.get(id=bill_id)
+    assert b.type == "bill"
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        'Authorization': 'f7e5b4af356a95c821c17d62a106ab2a:5172c0160319c3a1538ddc071658fa80'
+    }
+    data = {
+        "recipient": b.payeeEmail,
+        "name": b.payeeName,
+        "amount": b.amount,
+        "description": b.description
+    }
+    resp = requests.post("https://api.sandbox.checkbook.io/v3/check/digital", json=data, headers=headers)
+    print(resp.content)
 
 
 # Create your views here.

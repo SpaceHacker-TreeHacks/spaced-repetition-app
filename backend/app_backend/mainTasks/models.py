@@ -10,6 +10,7 @@ class Task(models.Model):
     link = models.CharField(max_length=150, blank=True)
     type = models.CharField(max_length=150)
     payeeEmail = models.CharField(max_length=150, null=True)
+    payeeName = models.CharField(max_length=150, null=True)
     amount = models.FloatField(null=True)
     createdDate = models.DateTimeField(auto_now_add=True)
     interval = models.IntegerField()
