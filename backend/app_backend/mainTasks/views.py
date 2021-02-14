@@ -36,13 +36,14 @@ def addTask(request):
     interval_days = int(data.get("interval"))
 
     student = Student.objects.get(id=id)
-    Task.objects.create(
+    task = Task.objects.create(
         description=description,
         subject=subject,
         link=link,
         interval = interval_days,
         student=student
     )
+    return JsonResponse({"status": "success", "taskId": task.id})
 @csrf_exempt
 def getTasks(request):
     data = request.GET
