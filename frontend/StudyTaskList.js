@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView, StyleSheet, FlatList, Text, View } from 'react-native';
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
 
 const TASKS = [
     {
@@ -25,6 +27,12 @@ const StudyTaskList = () => {
         <Item title={item.title} subtitle={item.subtitle} studyDate={item.studyDate}/>
     );
 
+    // Calls the register function for our application ONCE
+    // Empty braces to display the Expo push token on a device
+    useEffect(() => {
+        registerForPushNotifications();
+      }, [])
+
     return (  
         <SafeAreaView style={styles.container}>
             <Text style={{alignSelf: 'center', fontSize: '15em'}}>Study Tasks</Text>
@@ -32,6 +40,18 @@ const StudyTaskList = () => {
         </SafeAreaView>
     );
 }
+
+//ASync function to request a token from React Native Expo
+const registerForPushNotifications = async () => { 
+    try {
+       const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+       if (!permission.granted) return;
+       const token = await Notifications.getExpoPushTokenAsync();
+    console.log(token);
+    } catch (error) {
+      console.log('Error getting a token', error);
+    }
+  }
 
 const styles = StyleSheet.create({
     container: {
