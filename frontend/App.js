@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 import AddStudyTask from "./AddStudyTask";
 import StudyTaskList from "./StudyTaskList";
 import LoginScreen from "./components/LoginScreen"
+import RegisterScreen from "./components/RegisterScreen"
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import WelcomeScreen from "./components/WelcomeScreen";
@@ -18,6 +19,11 @@ export default function App() {
           name="Home Page"
           component={WelcomeScreen}
           options={{ title: "Welcome Screen" }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen}
+          options={{ title: "Register" }}
         />
         <Stack.Screen
           name="Login"

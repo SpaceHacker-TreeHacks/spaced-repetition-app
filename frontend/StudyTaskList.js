@@ -43,14 +43,17 @@ const Item = ({ description, subject, link, interval }) => {
     );
 }
 
-const StudyTaskList = ({navigation}) => {
+const StudyTaskList = ({route, navigation}) => {
     const [data, setData] = useState({});
+    const {userid} = route.params;
+
     const getData = async (event) => {
+        console.log("user id in main page", userid);
         const resp = await axios.get(`http://rk2357.pythonanywhere.com/tasks`,
         {
           params: {
             id: 1,
-            date: "2021-02-19"
+            date: "2021-02-19",
           }
           
         })
@@ -69,7 +72,7 @@ const StudyTaskList = ({navigation}) => {
 
     return (  
         <SafeAreaView style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Add Study Task')}><Text style={{
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Add Study Task', {userid: userid})}><Text style={{
                 alignSelf: 'center', 
                 paddingTop: 5, 
                 paddingBottom: 5,

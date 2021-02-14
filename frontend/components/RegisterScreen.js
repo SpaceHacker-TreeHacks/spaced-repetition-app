@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+import axios from 'axios';
 
 import Screen from "../components/Screen";
 import { Form, FormField, SubmitButton } from "../components/forms";
@@ -11,12 +12,23 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-function RegisterScreen() {
+const handleSubmit = async (values, navigation) => {
+
+  console.log("Values", values);
+   const resp = await axios.post(`http://rk2357.pythonanywhere.com/register/`,
+   {
+       ...values
+   })
+   console.log("User Id: ", resp.data.id);
+   navigation.navigate('Main Page', { userid: resp.data.id });
+}
+
+function RegisterScreen({ navigation }) {
   return (
     <Screen style={styles.container}>
       <Form
-        initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        initialValues={{ name: "", email: "", password: "", key: "", secretKey: "" }}
+        onSubmit={(values) => handleSubmit(values, navigation)}
         validationSchema={validationSchema}
       >
         <FormField
@@ -40,6 +52,24 @@ function RegisterScreen() {
           icon="lock"
           name="password"
           placeholder="Password"
+          secureTextEntry
+          textContentType="password"
+        />
+        <FormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="lock"
+          name="key"
+          placeholder="Checkbook key"
+          secureTextEntry
+          textContentType="password"
+        />
+        <FormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="lock"
+          name="secretKey"
+          placeholder="Checkbook secret key"
           secureTextEntry
           textContentType="password"
         />

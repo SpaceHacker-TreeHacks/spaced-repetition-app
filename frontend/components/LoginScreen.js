@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Image, useState } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 import * as Yup from "yup";
 import axios from 'axios';
@@ -12,7 +13,8 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
- const handleSubmit = async (values) => {
+ const handleSubmit = async (values, navigation) => {
+
    console.log("Values", values);
     const resp = await axios.get(`http://rk2357.pythonanywhere.com/login/`,
     {
@@ -21,10 +23,11 @@ const validationSchema = Yup.object().shape({
       }
       
     })
-    console.log(resp.data);
+    console.log("User Id: ", resp.data.id);
+    navigation.navigate('Main Page', { userid: resp.data.id });
  }
 
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
   
 
   return (
@@ -33,7 +36,7 @@ function LoginScreen(props) {
 
       <Form
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => handleSubmit(values)}
+        onSubmit={(values) => handleSubmit(values, navigation)}
         validationSchema={validationSchema}
       >
         <FormField

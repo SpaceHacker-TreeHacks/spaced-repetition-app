@@ -27,7 +27,7 @@ function WelcomeScreen({ navigation }, props) {
       </View>
       <View style={styles.buttonsContainer}>
         <AppButton title="Login" onPress={onPressLogin} />
-        <AppButton  title="Register"  color="secondary" />
+        <AppButton  title="Register"  onPress={onPressRegister} color="secondary" />
       </View>
     </View>
   );
