@@ -51,7 +51,7 @@ def getTasks(request):
     string_date = data['date']
     date = datetime.strptime(string_date, "%Y-%m-%d")
     student = Student.objects.get(id=id)
-    tasks = student.tasks
+    tasks = student.task_set
     result = []
     for task in tasks:
         difference = date - task.createdDate
