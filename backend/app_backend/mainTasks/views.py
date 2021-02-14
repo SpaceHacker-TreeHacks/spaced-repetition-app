@@ -41,6 +41,7 @@ def addTask(request):
         subject=subject,
         link=link,
         interval = interval_days,
+        student=student
     )
 @csrf_exempt
 def getTasks(request):
