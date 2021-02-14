@@ -40,6 +40,7 @@ const Item = ({ description, subject, link, interval, type, payeeName, payeeEmai
                 id: billid
             },
         );
+        return resp;
     }
 
     if(type ==='task') {
@@ -73,7 +74,7 @@ const StudyTaskList = ({route, navigation}) => {
         const resp = await axios.get(`http://rk2357.pythonanywhere.com/tasks`,
         {
           params: {
-            id: 1,
+            id: userid,
             date: "2021-02-19",
           }
           
