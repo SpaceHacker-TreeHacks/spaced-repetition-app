@@ -35,7 +35,6 @@ const Item = ({ description, interval, link, subject }) => {
         <Text style={styles.title}>{description}</Text>
         <Text style={styles.subtitle}>{subject}</Text>
         <Text style={styles.studyDate}>{interval}</Text>
-        {console.log(description)}
     </View>
     );
 }
@@ -51,8 +50,6 @@ const StudyTaskList = ({navigation}) => {
           }
           
         })
-        console.log(resp.data);
-        console.log(resp.status);
         setData(resp.data);
       }
     
