@@ -53,7 +53,7 @@ class AddStudyTask extends Component {
         });
         // console.log(date);
     }
-
+    // Buggy code, still works though
     handleSubmit = async (event) => {
         console.log("Posting Request");
         event.preventDefault();
