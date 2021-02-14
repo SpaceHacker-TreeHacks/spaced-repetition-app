@@ -1,9 +1,11 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AddStudyTask from './AddStudyTask'
 import StudyTaskList from './StudyTaskList';
 import axios from 'axios';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
 
@@ -19,11 +21,14 @@ export default function App() {
   });
 
   return (
-    <View style={styles.container}>
-      {/* <AddStudyTask /> */}
-      <StudyTaskList />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <View style={styles.container}>
+        {/* <AddStudyTask /> */}
+        <StudyTaskList />
+        <StatusBar style="auto" />
+      </View>
+    </NavigationContainer>
+
   );
 }
 
