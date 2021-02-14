@@ -1,26 +1,29 @@
+import datetime
+
 from django.db import models
 from django.http import JsonResponse
 from django.shortcuts import render
-from datetime import datetime
 from django.core import serializers
 from mainTasks.models import Student, Task
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.forms.models import model_to_dict
 from hashlib import sha256
+from django.utils import timezone as tz
 import requests
 @csrf_exempt
 def register(request):
     data = json.loads(request.body)
     username = data['email']
     passwd = data['password']
-    checkbook_key = data.get('key', "")
-    checkbook_
+    checkbook_key = data.get('key', None)
+    checkbook_secret_key = data.get('secret_key', None)
 
     current = Student.objects.filter(username=username)
     if current.exists():
         return JsonResponse({"error": "username taken"})
-    student = Student.objects.create(username=username, password=passwd)
+    student = Student.objects.create(username=username, password=passwd,
+                                     checkbook_key=checkbook_key, checkbook_secret_key=checkbook_secret_key)
     return JsonResponse({"id": student.id})
 @csrf_exempt
 def login(request):
@@ -41,21 +44,39 @@ def login(request):
 
 @csrf_exempt
 def addTask(request):
-
-    data = json.loads(request.body)
+    if request.content_type == 'application/json':
+        data = json.loads(request.body)
+    else:
+        data = request.POST
     id = data['id']
+    type = data['type']
+
+
     description = data['description']
-    subject = data['subject']
-    link = data.get('link', None)
+
     interval_days = int(data.get("interval"))
+    payeeName,payeeEmail,subject,link = "", "", "", ""
+    amount=-1
+    if type=="bill":
+        payeeName = data['payeeName']
+        payeeEmail = data['payeeEmail']
+        amount = int(data['amount'])
+    else:
+        subject = data['subject']
+        link = data.get('link', None)
+
 
     student = Student.objects.get(id=id)
     task = Task.objects.create(
+        type=type,
         description=description,
         subject=subject,
         link=link,
         interval = interval_days,
-        student=student
+        student=student,
+        payeeName=payeeName,
+        payeeEmail=payeeEmail,
+        amount=amount
     )
     return JsonResponse({"status": "success", "taskId": task.id})
 @csrf_exempt
@@ -63,7 +84,7 @@ def getTasks(request):
     data = request.GET
     id = data['id']
     string_date = data['date']
-    date = datetime.strptime(string_date, "%Y-%m-%d")
+    date = datetime.datetime.strptime(string_date, "%Y-%m-%d")
     student = Student.objects.get(id=id)
     tasks = student.task_set.all()
     result = []
