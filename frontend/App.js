@@ -19,7 +19,8 @@ export default function App() {
       params: {
         id: 1,
         date: "2021-02-19"
-      }
+      },
+      
     })
   }
 
