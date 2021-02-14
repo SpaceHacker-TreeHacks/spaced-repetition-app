@@ -68,7 +68,7 @@ const StudyTaskList = ({navigation}) => {
                 alignSelf: 'center', 
                 paddingTop: 5, 
                 paddingBottom: 5,
-                fontSize: 20, 
+                fontSize: 15, 
                 fontWeight: 'bold'}}>Add New Task</Text></TouchableOpacity>
             <StatusBar style={'auto'} />
             {/* <Text style={{alignSelf: 'center', fontSize: '15em'}}>Study Tasks</Text> */}
