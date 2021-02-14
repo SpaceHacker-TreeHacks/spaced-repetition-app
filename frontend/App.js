@@ -20,12 +20,13 @@ export default function App() {
         id: 1,
         date: "2021-02-19"
       }
-    }) 
+    })
+  }
 
   useEffect(() => {
     getData();
   });
-
+  
 
   return (
     <NavigationContainer>
