@@ -30,17 +30,38 @@ const testData = [
 
 
 
-const Item = ({ description, subject, link, interval }) => {
+const Item = ({ description, subject, link, interval, type, payeeName, payeeEmail, amount, billid }) => {
     const navigation = useNavigation();
 
-    return (
-    <TouchableOpacity onPress={() => navigation.navigate('Add Study Task')} style={styles.item}>
-        <Text style={styles.title}>{description}</Text>
-        <Text style={styles.subtitle}>{interval}</Text>
-        <Text style={styles.studyDate}>Study Interval: {subject} days</Text>
-    </TouchableOpacity>
-    
-    );
+    const handlePress = async () => {
+        const resp = await axios.post(
+            `http://rk2357.pythonanywhere.com/make_payment/`,
+            { 
+                id: billid
+            },
+        );
+    }
+
+    if(type ==='task') {
+        return (
+        <TouchableOpacity onPress={() => navigation.navigate('Add Study Task')} style={styles.item}>
+            <Text style={styles.title}>{description}</Text>
+            <Text style={styles.subtitle}>{interval}</Text>
+            <Text style={styles.studyDate}>Study Interval: {subject} days</Text>
+        </TouchableOpacity>
+        );
+    } else {
+        return (
+            <TouchableOpacity onPress={() => navigation.navigate('Add Study Task')} style={styles.item}>
+                <Text style={styles.title}>{description}</Text>
+            <   Text style={styles.subtitle}>{interval}</Text>
+                <Text style={styles.title}>{payeeName}</Text>
+                <Text style={styles.subtitle}>{payeeEmail}</Text>
+                <Text style={styles.studyDate}>Study Interval: {amount} days</Text>
+                <Button onPress={handlePress}>Pay bill</Button>
+            </TouchableOpacity>
+            );
+    }
 }
 
 const StudyTaskList = ({route, navigation}) => {
@@ -48,11 +69,11 @@ const StudyTaskList = ({route, navigation}) => {
     const {userid} = route.params;
 
     const getData = async (event) => {
-        console.log("user id in main page", userid);
+        // console.log("user id in main page", userid);
         const resp = await axios.get(`http://rk2357.pythonanywhere.com/tasks`,
         {
           params: {
-            id: 1,
+            id: userid,
             date: "2021-02-19",
           }
           
@@ -67,7 +88,7 @@ const StudyTaskList = ({route, navigation}) => {
     
 
     const renderItem = ({ item }) => (
-        <Item description={item.description} link={item.link} interval={item.subject} subject={item.interval}/>
+        <Item description={item.description} link={item.link} interval={item.subject} subject={item.interval} billid={item.id} type={item.type} payeeName={item.payeeName} payeeEmail={item.payeeEmail}/>
     );
 
     return (  

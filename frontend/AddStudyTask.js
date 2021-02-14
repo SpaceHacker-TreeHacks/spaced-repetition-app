@@ -68,11 +68,20 @@ class AddStudyTask extends Component {
     }
     // Buggy code, still works though
     handleSubmit = async (event) => {
+        const {route} = this.props;
+        const {userid} = route.params;
+        console.log(userid);
+        this.setState((state, props) => {
+            return {userid: userid}
+        }, () => {
+            console.log(this.state.userid);
+        });
+
         console.log("Posting Request");
         event.preventDefault();
         const resp = await axios.post(
             `http://rk2357.pythonanywhere.com/add_task/`,
-            { id: this.state.userid,
+            { id: userid,
               description: this.state.description,
               subject: this.state.subject,
               interval: 5,
@@ -83,6 +92,7 @@ class AddStudyTask extends Component {
               amount: this.state.amount
             },
         );
+        console.log(this.state.userid);
         console.log(resp.data);
         console.log("Request posted");
         // console.log(await axios.get(`http://rk2357.pythonanywhere.com/add_task/`));
