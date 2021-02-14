@@ -7,7 +7,7 @@ class Student(models.Model):
 class Task(models.Model):
     description = models.TextField()
     subject = models.CharField(max_length=50)
-    link = models.CharField(max_length=150, required=False)
+    link = models.CharField(max_length=150, blank=True)
     createdDate = models.DateTimeField(auto_now_add=True)
     interval = models.IntegerField()
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
