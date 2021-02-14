@@ -67,7 +67,10 @@ class AddStudyTask extends Component {
         );
         console.log(resp.data);
         console.log("Request posted");
-        console.log(await axios.get(`http://rk2357.pythonanywhere.com/add_task/`));
+        // console.log(await axios.get(`http://rk2357.pythonanywhere.com/add_task/`));
+        this.setState((state, props) => {
+            return {description: '', subject: ''}
+        })
         //   axios.post(`http://rk2357.pythonanywhere.com/add_task`, { user })
         //   .then(res => {
         //     console.log(res);
@@ -94,7 +97,7 @@ class AddStudyTask extends Component {
     render () {
 
         return (
-            <View>
+            <View >
                 <Text>Study Task Details</Text>
                 <TextInput 
                     style={styles.inputStyle} 
