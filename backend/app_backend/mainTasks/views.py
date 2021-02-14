@@ -28,9 +28,17 @@ def login(request):
     if username is None:
         username = request.GET.get('email')
     passwd = request.GET['password']
-    student = Student.objects.filter(username=username).first()
-    if passwd==student.password:
-        return JsonResponse({"id": student.id})
+    student = Student.objects.filter(username=username)
+    if student.exists():
+        student=student.first()
+        if passwd == student.password:
+            return JsonResponse({"id": student.id})
+        else:
+            return JsonResponse({"error": "bad auth"})
+    else:
+        return JsonResponse({"error": "bad auth"})
+
+
 @csrf_exempt
 def addTask(request):
 
