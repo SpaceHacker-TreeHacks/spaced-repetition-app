@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, FlatList, Text, View, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
 // const TASKS = [
 //     {
@@ -30,12 +31,15 @@ const testData = [
 
 
 const Item = ({ description, subject, link, interval }) => {
+    const navigation = useNavigation();
+
     return (
-    <View style={styles.item}>
+    <TouchableOpacity onPress={() => navigation.navigate('Add Study Task')} style={styles.item}>
         <Text style={styles.title}>{description}</Text>
         <Text style={styles.subtitle}>{interval}</Text>
         <Text style={styles.studyDate}>Study Interval: {subject} days</Text>
-    </View>
+    </TouchableOpacity>
+    
     );
 }
 
