@@ -1,8 +1,24 @@
 import React from "react";
 import { ImageBackground, StyleSheet, View, Image, Text } from "react-native";
 import AppButton from "./AppButton";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { useNavigation } from '@react-navigation/native';
 
-function WelcomeScreen(props) {
+
+
+
+function WelcomeScreen({ navigation }, props) {
+  const onPressLogin = () => {
+    navigation.navigate('Login');
+    console.log("Button pressed");
+  }
+
+  const onPressRegister = () => {
+    navigation.navigate('Register');
+    console.log('Button Pressed');
+  }
+
   return (
     <View style={styles.background}>
       <View style={styles.logoContainer}>
@@ -10,8 +26,8 @@ function WelcomeScreen(props) {
         <Text style={styles.tagline}>Space Repetition App</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <AppButton title="Login" />
-        <AppButton title="Register" color="secondary" />
+        <AppButton title="Login" onPress={onPressLogin} />
+        <AppButton  title="Register"  color="secondary" />
       </View>
     </View>
   );

@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import AddStudyTask from "./AddStudyTask";
 import StudyTaskList from "./StudyTaskList";
+import LoginScreen from "./components/LoginScreen"
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import WelcomeScreen from "./components/WelcomeScreen";
@@ -17,6 +18,11 @@ export default function App() {
           name="Home Page"
           component={WelcomeScreen}
           options={{ title: "Welcome Screen" }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ title: "Login" }}
         />
         <Stack.Screen
           name="Main Page"
