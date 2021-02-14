@@ -31,7 +31,7 @@ class TaskTestCase(TestCase):
         assert len(ret_result)==1
     def test_add_task(self):
         s = Student.objects.all().first()
-        resp = self.client.post("/add_task/", data={"id": s.id, "description": "extremely specific add_task", "subject": "def", "interval": 10, "link": "http://whatever"})
+        resp = self.client.post("/add_task/", data={"type": "task", "id": s.id, "description": "extremely specific add_task", "subject": "def", "interval": 10, "link": "http://whatever"})
         a=Task.objects.filter(description="extremely specific add_task")
         self.assertEqual(a.count(),1)
         a=a.first()
@@ -39,6 +39,10 @@ class TaskTestCase(TestCase):
         self.assertEqual(a.subject, "def")
         self.assertEqual(a.interval, 10)
         self.assertEqual(a.link, "http://whatever")
+
+
+
+
     def test_register(self):
         s = Student.objects.all().first()
         # resp = self.client.post("/register/", data={"email": }
