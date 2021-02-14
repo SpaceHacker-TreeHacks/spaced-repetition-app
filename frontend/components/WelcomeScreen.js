@@ -4,20 +4,16 @@ import AppButton from "./AppButton";
 
 function WelcomeScreen(props) {
   return (
-    <ImageBackground
-      blurRadius={10}
-      style={styles.background}
-     
-    >
+    <View style={styles.background}>
       <View style={styles.logoContainer}>
-        <Image style={styles.logo}  />
+        <Image style={styles.logo} />
         <Text style={styles.tagline}>Space Repetition App</Text>
       </View>
       <View style={styles.buttonsContainer}>
         <AppButton title="Login" />
         <AppButton title="Register" color="secondary" />
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
@@ -26,6 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
+    backgroundColor: "#131419",
   },
   buttonsContainer: {
     padding: 20,
@@ -44,6 +41,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "600",
     paddingVertical: 20,
+    color: "#fff",
   },
 });
 
