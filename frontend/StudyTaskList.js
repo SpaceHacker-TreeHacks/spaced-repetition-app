@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, FlatList, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, FlatList, Text, View, TouchableOpacity } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 const TASKS = [
     {
@@ -9,6 +10,8 @@ const TASKS = [
         studyDate: 'Feb. 28, 2021'
     }
 ]
+
+
 
 const Item = ({ title, subtitle, studyDate }) => {
     return (
@@ -20,14 +23,23 @@ const Item = ({ title, subtitle, studyDate }) => {
     );
 }
 
-const StudyTaskList = () => {
+const StudyTaskList = ({navigation}) => {
+
+
     const renderItem = ({ item }) => (
         <Item title={item.title} subtitle={item.subtitle} studyDate={item.studyDate}/>
     );
 
     return (  
         <SafeAreaView style={styles.container}>
-            <Text style={{alignSelf: 'center', fontSize: '15em'}}>Study Tasks</Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Add Study Task')}><Text style={{
+                alignSelf: 'center', 
+                paddingTop: 5, 
+                paddingBottom: 5,
+                fontSize: 20, 
+                fontWeight: 'bold'}}>Add New Task</Text></TouchableOpacity>
+            <StatusBar style={'auto'} />
+            {/* <Text style={{alignSelf: 'center', fontSize: '15em'}}>Study Tasks</Text> */}
             <FlatList styles={styles.taskList} data={TASKS} renderItem={renderItem} keyExtractor={item => item.id}/>
         </SafeAreaView>
     );
@@ -57,6 +69,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     studyDate: {
+    },
+    button: {
+        width: '30%',
+        backgroundColor: '#91bbff',
+        marginTop: 15,
+        marginRight: 15,
+        alignSelf: 'flex-end'
     }
   });
 
