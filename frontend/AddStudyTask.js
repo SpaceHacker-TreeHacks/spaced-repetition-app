@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Button, TextInput, } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import axios from 'axios';
 
 const DoneButton = (props) => {
     return (
@@ -52,10 +53,30 @@ class AddStudyTask extends Component {
         // console.log(date);
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
+        console.log("Posting Request");
         event.preventDefault();
-        console.log(this.state.subject);
-    }
+        const resp = await axios.post(
+            `http://rk2357.pythonanywhere.com/add_task/`,
+            { id: 1,
+              description: this.state.description,
+              subject: this.state.subject,
+              interval: 5,
+              link: ''
+            },
+        );
+        console.log(resp.data);
+        console.log("Request posted");
+        // console.log(await axios.get(`http://rk2357.pythonanywhere.com/add_task/`));
+        this.setState((state, props) => {
+            return {description: '', subject: ''}
+        })
+        //   axios.post(`http://rk2357.pythonanywhere.com/add_task`, { user })
+        //   .then(res => {
+        //     console.log(res);
+        //     console.log(res.data);
+        //   })
+    };
 
     handleChangeSubjectText(text) {
         this.setState((state, props) => {
@@ -76,7 +97,7 @@ class AddStudyTask extends Component {
     render () {
 
         return (
-            <View>
+            <View >
                 <Text>Study Task Details</Text>
                 <TextInput 
                     style={styles.inputStyle} 
