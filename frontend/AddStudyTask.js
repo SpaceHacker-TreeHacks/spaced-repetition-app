@@ -30,6 +30,7 @@ class AddStudyTask extends Component {
     constructor(props) {
         super(props);
         this.handler = this.handler.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             subject: '',
             description: '',
@@ -52,7 +53,7 @@ class AddStudyTask extends Component {
         });
         // console.log(date);
     }
-
+    // Buggy code, still works though
     handleSubmit = async (event) => {
         console.log("Posting Request");
         event.preventDefault();
