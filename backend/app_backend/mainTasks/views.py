@@ -6,12 +6,13 @@ from django.core import serializers
 from mainTasks.models import Student, Task
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.forms.models import model_to_dict
 from hashlib import sha256
 @csrf_exempt
 def register(request):
-
-    username = request.POST['email']
-    passwd = request.POST['password']
+    data = json.loads(request.body)
+    username = data['email']
+    passwd = data['password']
     current = Student.objects.filter(username=username)
     if current.exists():
         return JsonResponse({"error": "username taken"})
@@ -19,9 +20,8 @@ def register(request):
     return JsonResponse({"id": student.id})
 @csrf_exempt
 def login(request):
-
-    username = request.POST['email']
-    passwd = request.POST['password']
+    username = request.GET['username']
+    passwd = request.GET['password']
     student = Student.objects.filter(username=username).first()
     if passwd==student.password:
         return JsonResponse({"id": student.id})
@@ -51,13 +51,15 @@ def getTasks(request):
     string_date = data['date']
     date = datetime.strptime(string_date, "%Y-%m-%d")
     student = Student.objects.get(id=id)
-    tasks = student.task_set
+    tasks = student.task_set.all()
     result = []
     for task in tasks:
-        difference = date - task.createdDate
+        naive_date = task.createdDate.replace(tzinfo=None).date()
+        difference = date.date() - naive_date
+        print(difference)
         if difference.days!=0 and difference.days % task.interval == 0:
-            result.append(task)
-    return serializers.serialize("json", result, fields=('description', 'subject', 'link', 'interval'))
+            result.append(model_to_dict(task,fields=('description', 'subject', 'link', 'interval')))
+    return JsonResponse(result, safe=False)
 
 
 # Create your views here.
