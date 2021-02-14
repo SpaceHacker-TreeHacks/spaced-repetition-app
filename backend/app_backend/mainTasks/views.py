@@ -5,7 +5,7 @@ from datetime import datetime
 from django.core import serializers
 from mainTasks.models import Student, Task
 from django.views.decorators.csrf import csrf_exempt
-
+import json
 from hashlib import sha256
 @csrf_exempt
 def register(request):
@@ -28,7 +28,7 @@ def login(request):
 @csrf_exempt
 def addTask(request):
 
-    data = request.POST
+    data = json.loads(request.body)
     id = data['id']
     description = data['description']
     subject = data['subject']
