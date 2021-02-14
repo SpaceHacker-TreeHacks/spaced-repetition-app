@@ -29,12 +29,12 @@ const testData = [
 
 
 
-const Item = ({ description, interval, link, subject }) => {
+const Item = ({ description, subject, link, interval }) => {
     return (
     <View style={styles.item}>
         <Text style={styles.title}>{description}</Text>
-        <Text style={styles.subtitle}>{subject}</Text>
-        <Text style={styles.studyDate}>{interval}</Text>
+        <Text style={styles.subtitle}>{interval}</Text>
+        <Text style={styles.studyDate}>Study Interval: {subject} days</Text>
     </View>
     );
 }
@@ -50,6 +50,7 @@ const StudyTaskList = ({navigation}) => {
           }
           
         })
+        // console.log(resp.data);
         setData(resp.data);
       }
     
