@@ -39,6 +39,10 @@ class TaskTestCase(TestCase):
         self.assertEqual(a.subject, "def")
         self.assertEqual(a.interval, 10)
         self.assertEqual(a.link, "http://whatever")
+
+
+
+
     def test_register(self):
         s = Student.objects.all().first()
         # resp = self.client.post("/register/", data={"email": }
