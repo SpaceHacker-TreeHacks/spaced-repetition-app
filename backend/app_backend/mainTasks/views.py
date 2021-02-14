@@ -58,8 +58,13 @@ def getTasks(request):
         difference = date.date() - naive_date
         print(difference)
         if difference.days!=0 and difference.days % task.interval == 0:
-            result.append(model_to_dict(task,fields=('description', 'subject', 'link', 'interval')))
+            result.append(model_to_dict(task,fields=('id', 'description', 'subject', 'link', 'interval')))
     return JsonResponse(result, safe=False)
+@csrf_exempt
+def makePayment(request):
+    data = json.loads(request.body)
+    bill_id=int(data['id'])
+    Task.objects.get(id=bill_id)
 
 
 # Create your views here.
