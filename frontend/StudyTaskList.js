@@ -1,33 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, FlatList, Text, View, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import axios from 'axios';
 
-const TASKS = [
+// const TASKS = [
+//     {
+//         id: 1,
+//         title: 'Study Spanish',
+//         subtitle: 'Spanish',
+//         studyDate: 'Feb. 28, 2021'
+//     }
+// ]
+
+const testData = [
     {
-        id: 1,
-        title: 'Study Spanish',
-        subtitle: 'Spanish',
-        studyDate: 'Feb. 28, 2021'
+        description: "Study biolody",
+        interval: 5,
+        link: "",
+        subject: "Biology"
     }
 ]
 
 
 
-const Item = ({ title, subtitle, studyDate }) => {
+//   useEffect(() => {
+//     getData();
+//   });
+
+
+
+const Item = ({ description, interval, link, subject }) => {
     return (
     <View style={styles.item}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subtitle}>{subtitle}</Text>
-        <Text style={styles.studyDate}>{studyDate}</Text>
+        <Text style={styles.title}>{description}</Text>
+        <Text style={styles.subtitle}>{subject}</Text>
+        <Text style={styles.studyDate}>{interval}</Text>
+        {console.log(description)}
     </View>
     );
 }
 
 const StudyTaskList = ({navigation}) => {
-
+    const [data, setData] = useState({});
+    const getData = async (event) => {
+        const resp = await axios.get(`http://rk2357.pythonanywhere.com/tasks`,
+        {
+          params: {
+            id: 1,
+            date: "2021-02-19"
+          }
+          
+        })
+        console.log(resp.data);
+        console.log(resp.status);
+        setData(resp.data);
+      }
+    
+      useEffect(() => {
+        getData();
+      });
+    
 
     const renderItem = ({ item }) => (
-        <Item title={item.title} subtitle={item.subtitle} studyDate={item.studyDate}/>
+        <Item description={item.description} link={item.link} interval={item.subject} subject={item.interval}/>
     );
 
     return (  
@@ -40,7 +75,8 @@ const StudyTaskList = ({navigation}) => {
                 fontWeight: 'bold'}}>Add New Task</Text></TouchableOpacity>
             <StatusBar style={'auto'} />
             {/* <Text style={{alignSelf: 'center', fontSize: '15em'}}>Study Tasks</Text> */}
-            <FlatList styles={styles.taskList} data={TASKS} renderItem={renderItem} keyExtractor={item => item.id}/>
+            <FlatList styles={styles.taskList} data={data} renderItem={renderItem} keyExtractor={() => Math.floor(Math.random() * 100000000)}/>
+            
         </SafeAreaView>
     );
 }
