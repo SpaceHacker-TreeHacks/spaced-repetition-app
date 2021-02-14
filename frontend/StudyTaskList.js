@@ -11,6 +11,8 @@ const TASKS = [
     }
 ]
 
+
+
 const Item = ({ title, subtitle, studyDate }) => {
     return (
     <View style={styles.item}>
@@ -21,12 +23,12 @@ const Item = ({ title, subtitle, studyDate }) => {
     );
 }
 
-const StudyTaskList = ({ navigation }) => {
+const StudyTaskList = ({navigation}) => {
+
+
     const renderItem = ({ item }) => (
         <Item title={item.title} subtitle={item.subtitle} studyDate={item.studyDate}/>
     );
-
-
 
     return (  
         <SafeAreaView style={styles.container}>
@@ -34,7 +36,7 @@ const StudyTaskList = ({ navigation }) => {
                 alignSelf: 'center', 
                 paddingTop: 5, 
                 paddingBottom: 5,
-                fontSize: '15em', 
+                fontSize: 20, 
                 fontWeight: 'bold'}}>Add New Task</Text></TouchableOpacity>
             <StatusBar style={'auto'} />
             {/* <Text style={{alignSelf: 'center', fontSize: '15em'}}>Study Tasks</Text> */}

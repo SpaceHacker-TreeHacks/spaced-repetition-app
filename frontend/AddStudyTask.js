@@ -30,6 +30,7 @@ class AddStudyTask extends Component {
     constructor(props) {
         super(props);
         this.handler = this.handler.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             subject: '',
             description: '',

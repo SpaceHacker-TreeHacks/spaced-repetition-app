@@ -16,7 +16,7 @@ export default function App() {
     {
       params: {
         id: 1,
-        date: "2021-02-13"
+        date: "2021-02-19"
       }
     }) 
     console.log(resp.data);
@@ -26,6 +26,7 @@ export default function App() {
   useEffect(() => {
     getData();
   });
+
 
   return (
     <NavigationContainer>
