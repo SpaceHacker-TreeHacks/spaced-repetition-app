@@ -8,10 +8,13 @@ class Task(models.Model):
     description = models.TextField()
     subject = models.CharField(max_length=50)
     link = models.CharField(max_length=150, blank=True)
+    type = models.CharField(max_length=150)
+    payeeEmail = models.CharField(max_length=150, null=True)
+    payeeName = models.CharField(max_length=150, null=True)
+    amount = models.FloatField(null=True)
     createdDate = models.DateTimeField(auto_now_add=True)
     interval = models.IntegerField()
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-
 
 
 

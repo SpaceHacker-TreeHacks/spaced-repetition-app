@@ -7,5 +7,8 @@ urlpatterns = [
     path('login/',views.login),
     path('register/',views.register),
     path('tasks/', views.getTasks),
-    path('add_task/', views.addTask)
+    path('add_task/', views.addTask),
+
+    path('make_payment/', views.makePayment)
 ]
+#    path('add_bill/', views.addBill),
