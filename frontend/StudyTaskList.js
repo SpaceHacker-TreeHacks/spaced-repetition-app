@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, FlatList, Text, View, TouchableOpacity } from 'react-native';
+import { SafeAreaView, StyleSheet, FlatList, Text, View, TouchableOpacity, Button } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
@@ -57,8 +57,8 @@ const Item = ({ description, subject, link, interval, type, payeeName, payeeEmai
             <   Text style={styles.subtitle}>{interval}</Text>
                 <Text style={styles.title}>{payeeName}</Text>
                 <Text style={styles.subtitle}>{payeeEmail}</Text>
-                <Text style={styles.studyDate}>Study Interval: {amount} days</Text>
-                <Button onPress={handlePress}>Pay bill</Button>
+                <Text style={styles.studyDate}>Amount: {amount} </Text>
+                <Button title={"Pay Bill"} onPress={handlePress}></Button>
             </TouchableOpacity>
             );
     }
@@ -73,7 +73,7 @@ const StudyTaskList = ({route, navigation}) => {
         const resp = await axios.get(`http://rk2357.pythonanywhere.com/tasks`,
         {
           params: {
-            id: userid,
+            id: 1,
             date: "2021-02-19",
           }
           
